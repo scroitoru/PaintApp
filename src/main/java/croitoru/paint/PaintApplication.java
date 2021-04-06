@@ -11,7 +11,7 @@ public class PaintApplication extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/paint_application.fxml"));
 
-        Scene scene = new Scene(root, 800, 400);
+        Scene scene = new Scene(root, 800, 500);
 
         stage.setTitle("Paint Application");
         stage.setScene(scene);

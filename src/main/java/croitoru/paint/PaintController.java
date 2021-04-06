@@ -19,19 +19,30 @@ public class PaintController {
     @FXML
     private CheckBox eraser;
 
+    private double lastX;
+    private double lastY;
+
     public void initialize(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        canvas.setOnMousePressed(e ->{
+            lastX = e.getX();
+            lastY = e.getY();
+        });
+
         canvas.setOnMouseDragged(e -> {
             double size = Double.parseDouble(brushSize.getText());
-            double x = e.getX() - size / 2;
-            double y = e.getY() - size / 2;
+            double x = e.getX();
+            double y = e.getY();
 
             if (eraser.isSelected()){
                 gc.clearRect(x,y,size,size);
             }else{
-                gc.setFill(colorPicker.getValue());
-                gc.fillRect(x,y,size,size);
+                gc.setLineWidth(size);
+                gc.setStroke(colorPicker.getValue());
+                gc.strokeLine(lastX,lastY,x,y);
+                lastX = x;
+                lastY = y;
             }
         });
     }

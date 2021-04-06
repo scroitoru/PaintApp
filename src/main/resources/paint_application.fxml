@@ -9,12 +9,11 @@
 <?import javafx.scene.canvas.Canvas?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="croitoru.paint.PaintController"
-            prefHeight="600.0" prefWidth="600.0">
+            fx:controller="croitoru.paint.PaintController">
     <top>
         <VBox>
             <MenuBar>
-                <Menu text="file">
+                <Menu text="MENU">
                     <MenuItem text="Exit" onAction="#onExit"/>
                 </Menu>
             </MenuBar>
@@ -30,7 +29,7 @@
     </top>
 
     <center>
-        <Canvas fx:id="canvas" width="600" height="600" />
+        <Canvas fx:id="canvas" width="1000" height="800" />
     </center>
 
 </BorderPane>
