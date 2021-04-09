@@ -1,12 +1,12 @@
 package croitoru.paint;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class PaintController {
 
@@ -25,6 +25,8 @@ public class PaintController {
     public void initialize(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        //so that the drawing will begin where you put mouse
+        //instead of continuing from where you last drew
         canvas.setOnMousePressed(e ->{
             lastX = e.getX();
             lastY = e.getY();
@@ -45,8 +47,5 @@ public class PaintController {
                 lastY = y;
             }
         });
-    }
-    public void onExit(){
-        Platform.exit();
     }
 }

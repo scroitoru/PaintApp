@@ -11,21 +11,14 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="croitoru.paint.PaintController">
     <top>
-        <VBox>
-            <MenuBar>
-                <Menu text="MENU">
-                    <MenuItem text="Exit" onAction="#onExit"/>
-                </Menu>
-            </MenuBar>
-
-            <ToolBar>
-                <HBox alignment="CENTER">
-                    <TextField fx:id="brushSize" text="18"/>
-                    <ColorPicker fx:id="colorPicker"/>
-                    <CheckBox fx:id="eraser" text="Eraser"/>
-                </HBox>
-            </ToolBar>
-        </VBox>
+        <ToolBar>
+            <HBox alignment="CENTER">
+                <Label text="Brush Size: "/>
+                <TextField fx:id="brushSize" text="18" prefWidth="50"/>
+                <ColorPicker fx:id="colorPicker" prefWidth="100"/>
+                <CheckBox fx:id="eraser" text="Eraser"/>
+            </HBox>
+        </ToolBar>
     </top>
 
     <center>
