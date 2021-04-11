@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 
-<?import javafx.scene.canvas.Canvas?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="croitoru.paint.PaintController">
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="croitoru.paint.PaintController">
     <top>
         <ToolBar>
             <HBox alignment="CENTER">
-                <Label text="Brush Size: "/>
-                <TextField fx:id="brushSize" text="18" prefWidth="50"/>
-                <ColorPicker fx:id="colorPicker" prefWidth="100"/>
-                <CheckBox fx:id="eraser" text="Eraser"/>
+                <Label text="Brush Size: " />
+                <TextField fx:id="brushSize" prefWidth="50" text="18">
+               <HBox.margin>
+                  <Insets right="16.0" />
+               </HBox.margin></TextField>
+                <ColorPicker fx:id="colorPicker" prefWidth="100">
+               <value>
+                  <Color />
+               </value>
+               <HBox.margin>
+                  <Insets left="16.0" right="16.0" />
+               </HBox.margin></ColorPicker>
+                <CheckBox fx:id="eraser" text="Eraser">
+               <HBox.margin>
+                  <Insets left="16.0" right="16.0" />
+               </HBox.margin></CheckBox>
             </HBox>
         </ToolBar>
     </top>
 
     <center>
-        <Canvas fx:id="canvas" width="1000" height="800" />
+        <Canvas fx:id="canvas" height="800" width="1000" />
     </center>
 
 </BorderPane>

@@ -13,7 +13,7 @@ public class PaintApplication extends Application {
 
         Scene scene = new Scene(root, 800, 500);
 
-        stage.setTitle("Paint Application");
+        stage.setTitle("Paint Application SC");
         stage.setScene(scene);
         stage.show();
     }

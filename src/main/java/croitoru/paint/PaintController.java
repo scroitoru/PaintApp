@@ -6,10 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 
 public class PaintController {
-
     @FXML
     private Canvas canvas;
     @FXML
