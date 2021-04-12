@@ -13,6 +13,8 @@ import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
 public class PaintControllerTest {
+    private PaintController controller;
+    private Canvas canvas;
     private ColorPicker colorPicker;
     private TextField brushSize;
     private CheckBox eraser;
@@ -32,12 +34,13 @@ public class PaintControllerTest {
         double size = Double.parseDouble(brushSize.getText());
 
         //when
+        controller.initialize();
         assertFalse(eraser.isSelected());
 
         //then
-        gc.setLineWidth(size);
-        gc.setStroke(colorPicker.getValue());
-        gc.strokeLine(lastX,lastY,x,y);
+        verify(gc).setLineWidth(size);
+        verify(gc).setStroke(colorPicker.getValue());
+        verify(gc).strokeLine(lastX,lastY,x,y);
         lastX = x;
         lastY = y;
     }
@@ -49,18 +52,19 @@ public class PaintControllerTest {
         double size = Double.parseDouble(brushSize.getText());
 
         //when
+        controller.initialize();
         eraser.isSelected();
 
         //then
-        gc.clearRect(x,y,size,size);
+        verify(gc).clearRect(x,y,size,size);
     }
 
     private void givenPaintController(){
-        Canvas canvas = mock(Canvas.class);
+        canvas = mock(Canvas.class);
         colorPicker = mock(ColorPicker.class);
         brushSize = mock(TextField.class);
         eraser = mock(CheckBox.class);
-        PaintController controller = mock(PaintController.class);
+        controller = mock(PaintController.class);
         gc = mock(GraphicsContext.class);
     }
 
