@@ -5,18 +5,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.TextField;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.*;
 
 public class PaintControllerTest {
     private PaintController controller;
     private Canvas canvas;
     private ColorPicker colorPicker;
-    private TextField brushSize;
     private CheckBox eraser;
     private GraphicsContext gc;
     double x, y, lastX, lastY;
@@ -31,11 +27,12 @@ public class PaintControllerTest {
     public void draw(){
         //given
         givenPaintController();
-        double size = Double.parseDouble(brushSize.getText());
+        double size = 18;
+        eraser.setSelected(false);
+        doReturn(false).when(eraser).isSelected();
 
         //when
         controller.initialize();
-        assertFalse(eraser.isSelected());
 
         //then
         verify(gc).setLineWidth(size);
@@ -49,7 +46,9 @@ public class PaintControllerTest {
     public void erase(){
         //given
         givenPaintController();
-        double size = Double.parseDouble(brushSize.getText());
+        double size = 18;
+        eraser.setSelected(true);
+        doReturn(true).when(eraser).isSelected();
 
         //when
         controller.initialize();
@@ -62,22 +61,9 @@ public class PaintControllerTest {
     private void givenPaintController(){
         canvas = mock(Canvas.class);
         colorPicker = mock(ColorPicker.class);
-        brushSize = mock(TextField.class);
         eraser = mock(CheckBox.class);
         controller = mock(PaintController.class);
         gc = mock(GraphicsContext.class);
     }
 
-//    @Test
-//    public void setBrushSize(){
-//        //given
-//        givenPaintController();
-//        doReturn(18).when(brushSize.getText());
-//
-//        //when
-//        controller.initialize();
-//
-//        //then
-//        verify(brushSize.getText());
-//    }
 }
