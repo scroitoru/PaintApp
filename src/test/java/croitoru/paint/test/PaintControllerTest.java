@@ -23,6 +23,25 @@ public class PaintControllerTest {
     }
 
 
+    /**
+     * verify that initialize() works
+     */
+    @Test
+    public void initialize(){
+        //given
+        givenPaintController();
+
+        //when
+        controller.initialize();
+
+        //then
+        verify(controller).initialize();
+    }
+
+
+    /**
+     * verify that when mouse is dragged, drawing works
+     */
     @Test
     public void draw(){
         //given
@@ -42,6 +61,9 @@ public class PaintControllerTest {
         lastY = y;
     }
 
+    /**
+     * verify that when eraser is checked and then mouse dragged, it erases
+     */
     @Test
     public void erase(){
         //given
